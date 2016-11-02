@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{21383F2A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.Tests.Core", "Source\Tests\ActivityTracker.Tests.Core\ActivityTracker.Tests.Core.csproj", "{B21F836B-DE4D-4D85-8C99-AFF0BC45C96F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.Core.DAL.EF", "Source\ActivityTracker.Core.DAL.EF\ActivityTracker.Core.DAL.EF.csproj", "{B9EF68E1-1F9E-4663-A07D-24876B48A33B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{B21F836B-DE4D-4D85-8C99-AFF0BC45C96F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B21F836B-DE4D-4D85-8C99-AFF0BC45C96F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B21F836B-DE4D-4D85-8C99-AFF0BC45C96F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9EF68E1-1F9E-4663-A07D-24876B48A33B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9EF68E1-1F9E-4663-A07D-24876B48A33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9EF68E1-1F9E-4663-A07D-24876B48A33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9EF68E1-1F9E-4663-A07D-24876B48A33B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3C61A715-C53A-4BF8-ACCB-6D0B1DB8FB22} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
 		{B21F836B-DE4D-4D85-8C99-AFF0BC45C96F} = {21383F2A-E572-4819-80AF-0FDF2EC46908}
+		{B9EF68E1-1F9E-4663-A07D-24876B48A33B} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
 	EndGlobalSection
 EndGlobal
