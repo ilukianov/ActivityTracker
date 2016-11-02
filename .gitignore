@@ -1,0 +1,6 @@
+/.vs/ActivityTracker.Core/v14/*.suo
+*.dll
+*.pdb
+*.suo
+*.cache
+Debug
