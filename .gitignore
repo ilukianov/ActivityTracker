@@ -4,3 +4,4 @@
 *.suo
 *.cache
 Debug
+EntityFramework.6.1.3
