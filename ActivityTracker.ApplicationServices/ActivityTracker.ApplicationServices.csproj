@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.4.1.451, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.4.1\lib\net45\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,10 +49,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityService.cs" />
+    <Compile Include="Initialization\Initializer.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="Implementation\ActivityDto.cs" />
     <Compile Include="Implementation\AddActivityDto.cs" />
     <Compile Include="Interfaces\IActivityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Source\ActivityTracker.Core.Infrastructure\ActivityTracker.Core.Infrastructure.csproj">
+      <Project>{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}</Project>
+      <Name>ActivityTracker.Core.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Source\ActivityTracker.Core\ActivityTracker.Core.csproj">
+      <Project>{3C61A715-C53A-4BF8-ACCB-6D0B1DB8FB22}</Project>
+      <Name>ActivityTracker.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

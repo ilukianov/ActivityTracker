@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{2690602B-6CB8-4869-ABBC-7A6350BBF2E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.Core", "Source\ActivityTracker.Core\ActivityTracker.Core.csproj", "{3C61A715-C53A-4BF8-ACCB-6D0B1DB8FB22}"
+	ProjectSection(ProjectDependencies) = postProject
+		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57} = {194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{21383F2A-E572-4819-80AF-0FDF2EC46908}"
 EndProject
@@ -16,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.ApplicationServices", "ActivityTracker.ApplicationServices\ActivityTracker.ApplicationServices.csproj", "{7327AD38-B558-43C2-800E-B353F850690D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.Web.SiteSPA", "ActivityTracker.Web.SiteSPA\ActivityTracker.Web.SiteSPA.csproj", "{58333D7B-B57A-4F56-BC54-F3C3B9D28658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.Core.Infrastructure", "Source\ActivityTracker.Core.Infrastructure\ActivityTracker.Core.Infrastructure.csproj", "{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +48,10 @@ Global
 		{58333D7B-B57A-4F56-BC54-F3C3B9D28658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58333D7B-B57A-4F56-BC54-F3C3B9D28658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58333D7B-B57A-4F56-BC54-F3C3B9D28658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +62,6 @@ Global
 		{0C5AD9D8-9C76-4A31-B354-C9B6480C03C7} = {21383F2A-E572-4819-80AF-0FDF2EC46908}
 		{7327AD38-B558-43C2-800E-B353F850690D} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
 		{58333D7B-B57A-4F56-BC54-F3C3B9D28658} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
+		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
 	EndGlobalSection
 EndGlobal

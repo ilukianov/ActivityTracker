@@ -1,30 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ActivityTracker.ApplicationServices.Implementation;
 using ActivityTracker.ApplicationServices.Interfaces;
+using ActivityTracker.Core.DAL.Repository;
+using ActivityTracker.Core.Domain;
 
 namespace ActivityTracker.ApplicationServices
 {
     public class ActivityService : IActivityService
     {
-        private readonly IActivityService _activityService;
+        private readonly IActivityRepository _activityRepository;
 
-        public ActivityService(IActivityService activityService)
+        public ActivityService(IActivityRepository activityService)
         {
-            _activityService = activityService;
+            _activityRepository = activityService;
         }
 
         public IEnumerable<ActivityDto> GetAllActivities()
         {
-            return _activityService.GetAllActivities();
+            var activities = _activityRepository.GetActivities().ToList();
+            var activityDtos = activities.Select(Mapper.Map<Activity, ActivityDto>);
+            return activityDtos;//.MapTo<ActivityDto>;
         }
 
         public void AddActivity(AddActivityDto addActivityDto)
         {
-            _activityService.AddActivity(addActivityDto);
+            var activityToAdd = Mapper.Map<AddActivityDto, Activity>(addActivityDto);
+            _activityRepository.Add(activityToAdd);
         }
     }
 }

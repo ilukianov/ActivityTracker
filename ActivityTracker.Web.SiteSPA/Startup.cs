@@ -14,5 +14,10 @@ namespace ActivityTracker.Web.SiteSPA
         {
             ConfigureAuth(app);
         }
+
+/*        private void ConfigureServices(IServiceCollection services)
+        {
+            
+        }*/
     }
 }

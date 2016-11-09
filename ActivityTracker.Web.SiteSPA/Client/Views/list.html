@@ -1,0 +1,18 @@
+﻿<div data-ng-controller="ListController">
+    <table>
+        <tr ng-repeat="activity in activities">
+            <td>{{activity.Title}}</td>
+            <td>
+                <a href="#/details/{{activity.Id}}">
+                    Details
+                </a>
+                <button class="btn btn-default" ng-click="delete(activity)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-default" ng-click="create()">Create</button>
+<!--    <div ng-include="'/Client/views/edit.html'">
+    </div>-->
+</div>
