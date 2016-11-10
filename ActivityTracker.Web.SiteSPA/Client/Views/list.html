@@ -6,13 +6,12 @@
                 <a href="#/details/{{activity.Id}}">
                     Details
                 </a>
-                <button class="btn btn-default" ng-click="delete(activity)">
-                    Delete
-                </button>
+                <button ng-show="{{activity.Status}}===0" class="btn btn-default" ng-click="start(activity)">Start</button>
+                <button ng-show="{{activity.Status}}===1" class="btn btn-default" ng-click="stop(activity)">Stop</button>
             </td>
         </tr>
     </table>
-    <button class="btn btn-default" ng-click="create()">Create</button>
+    <button class="btn btn-default" ng-click="create()">Add Activity</button>
 <!--    <div ng-include="'/Client/views/edit.html'">
     </div>-->
 </div>

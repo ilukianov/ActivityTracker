@@ -44,7 +44,12 @@
     <Compile Include="Domain\Activity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ActivityTracker.Common\ActivityTracker.Common.csproj">
+      <Project>{9D389B87-2C59-44E8-80E9-0A1896E1B6C2}</Project>
+      <Name>ActivityTracker.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.Web.SiteSPA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.Core.Infrastructure", "Source\ActivityTracker.Core.Infrastructure\ActivityTracker.Core.Infrastructure.csproj", "{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityTracker.Common", "Source\ActivityTracker.Common\ActivityTracker.Common.csproj", "{9D389B87-2C59-44E8-80E9-0A1896E1B6C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D389B87-2C59-44E8-80E9-0A1896E1B6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D389B87-2C59-44E8-80E9-0A1896E1B6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D389B87-2C59-44E8-80E9-0A1896E1B6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D389B87-2C59-44E8-80E9-0A1896E1B6C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,5 +69,6 @@ Global
 		{7327AD38-B558-43C2-800E-B353F850690D} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
 		{58333D7B-B57A-4F56-BC54-F3C3B9D28658} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
 		{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
+		{9D389B87-2C59-44E8-80E9-0A1896E1B6C2} = {2690602B-6CB8-4869-ABBC-7A6350BBF2E0}
 	EndGlobalSection
 EndGlobal

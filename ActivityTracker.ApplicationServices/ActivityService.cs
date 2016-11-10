@@ -18,7 +18,7 @@ namespace ActivityTracker.ApplicationServices
 
         public IEnumerable<ActivityDto> GetAllActivities()
         {
-            var activities = _activityRepository.GetActivities().ToList();
+            var activities = _activityRepository.GetActivities();
             var activityDtos = activities.Select(Mapper.Map<Activity, ActivityDto>);
             return activityDtos;//.MapTo<ActivityDto>;
         }

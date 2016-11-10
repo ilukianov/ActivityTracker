@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -31,8 +32,29 @@ namespace ActivityTracker.Web.SiteSPA.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]ActivityDto activityDto, string typeOfAction)
         {
+            Debug.WriteLine(typeOfAction);
+        }
+
+        // PUT api/<controller>/5
+        public void Put(int id, [FromBody]ActivityDto activityDto)
+        {
+            Debug.WriteLine(id);
+        }
+
+        [Route("api/activity/changestatus/{id:int}")]
+        // PUT api/<controller>/5
+        public void Put(int id, [FromBody]ActivityStatusChangeDto activityDto)
+        {
+            Debug.WriteLine(id);
+        }
+
+        [Route("api/activity/changetitle/{id:int}")]
+        // PUT api/<controller>/5
+        public void Put(int id, [FromBody]ActivityFieldChangeDto activityDto)
+        {
+            Debug.WriteLine(id);
         }
 
         // DELETE api/<controller>/5

@@ -1,3 +1,5 @@
+using System.Data.SqlTypes;
+using ActivityTracker.Common;
 using ActivityTracker.Core.Domain;
 
 namespace ActivityTracker.Core.DAL.EF.Migrations
@@ -21,15 +23,43 @@ namespace ActivityTracker.Core.DAL.EF.Migrations
                 {
                     Id = 1,
                     Description = "New Activity #1",
-                    Title = "Task number 1"
+                    Title = "Task number 1",
+                    StarTime = new DateTime(1753, 1, 1),
+                    Status = ActivityStatuses.None
                 },
                 new Activity
                 {
                     Id = 2,
                     Title = "some new test task",
-                    Description = "description for the new test task"
+                    Description = "description for the new test task",
+                    StarTime = DateTime.Now,
+                    Status = ActivityStatuses.InProgress
+                },
+                new Activity
+                {
+                    Id = 3,
+                    Title = "Task number 3",
+                    Description = "description for the test task #3",
+                    StarTime = DateTime.Now,
+                    Status = ActivityStatuses.InProgress
+                },
+                new Activity
+                {
+                    Id = 4,
+                    Title = "Task number 4",
+                    Description = "description for the test task #4",
+                    StarTime = DateTime.Now,
+                    Status = ActivityStatuses.Stopped
+                },
+                new Activity
+                {
+                    Id = 5,
+                    Title = "Task number 5",
+                    Description = "description for the test task #5",
+                    StarTime = DateTime.Now,
+                    Status = ActivityStatuses.Done
                 }
-                
+
                 );
 
             //  This method will be called after migrating to the latest version.

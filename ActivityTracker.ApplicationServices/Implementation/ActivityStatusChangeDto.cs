@@ -7,16 +7,10 @@ using ActivityTracker.Common;
 
 namespace ActivityTracker.ApplicationServices.Implementation
 {
-    public sealed class ActivityDto
+    public sealed class ActivityStatusChangeDto
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
-
-        public string Description { get; set; }
-
         public ActivityStatuses Status { get; set; }
-
-        public DateTime StartTime { get; set; }
     }
 }

@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityService.cs" />
+    <Compile Include="Implementation\ActivityFieldChangeDto.cs" />
+    <Compile Include="Implementation\ActivityStatusChangeDto.cs" />
     <Compile Include="Initialization\Initializer.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Implementation\ActivityDto.cs" />
@@ -58,6 +60,10 @@
     <Compile Include="ServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Source\ActivityTracker.Common\ActivityTracker.Common.csproj">
+      <Project>{9D389B87-2C59-44E8-80E9-0A1896E1B6C2}</Project>
+      <Name>ActivityTracker.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Source\ActivityTracker.Core.Infrastructure\ActivityTracker.Core.Infrastructure.csproj">
       <Project>{194BF80A-E3D6-4BA6-9E44-B5CF8EA0BD57}</Project>
       <Name>ActivityTracker.Core.Infrastructure</Name>
