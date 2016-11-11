@@ -24,7 +24,7 @@ namespace ActivityTracker.Core.DAL.EF.Migrations
                     Id = 1,
                     Description = "New Activity #1",
                     Title = "Task number 1",
-                    StarTime = new DateTime(1753, 1, 1),
+                    StarTime = ConstantsDb.SqlDbMinDateTime, //new DateTime(1753, 1, 1),
                     Status = ActivityStatuses.None
                 },
                 new Activity

@@ -6,8 +6,9 @@
                 <a href="#/details/{{activity.Id}}">
                     Details
                 </a>
-                <button ng-show="{{activity.Status}}===0" class="btn btn-default" ng-click="start(activity)">Start</button>
-                <button ng-show="{{activity.Status}}===1" class="btn btn-default" ng-click="stop(activity)">Stop</button>
+                <button ng-show="activity.CanStart()" class="btn btn-default" ng-click="start(activity)">Start</button>
+                <button ng-show="activity.CanStop()" class="btn btn-default" ng-click="stop(activity)">Stop</button>
+                <button ng-show="activity.CanDone()" class="btn btn-default" ng-click="done(activity)">Done</button>
             </td>
         </tr>
     </table>
