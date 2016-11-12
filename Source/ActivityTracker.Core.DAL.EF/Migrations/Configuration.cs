@@ -14,6 +14,7 @@ namespace ActivityTracker.Core.DAL.EF.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ActivityTracker.Core.DAL.EF.ActivityDbContext context)
@@ -24,7 +25,7 @@ namespace ActivityTracker.Core.DAL.EF.Migrations
                     Id = 1,
                     Description = "New Activity #1",
                     Title = "Task number 1",
-                    StarTime = ConstantsDb.SqlDbMinDateTime, //new DateTime(1753, 1, 1),
+                    StartTime = ConstantsDb.SqlDbMinDateTime, //new DateTime(1753, 1, 1),
                     Status = ActivityStatuses.None
                 },
                 new Activity
@@ -32,7 +33,7 @@ namespace ActivityTracker.Core.DAL.EF.Migrations
                     Id = 2,
                     Title = "some new test task",
                     Description = "description for the new test task",
-                    StarTime = DateTime.Now,
+                    StartTime = DateTime.UtcNow,
                     Status = ActivityStatuses.InProgress
                 },
                 new Activity
@@ -40,15 +41,15 @@ namespace ActivityTracker.Core.DAL.EF.Migrations
                     Id = 3,
                     Title = "Task number 3",
                     Description = "description for the test task #3",
-                    StarTime = DateTime.Now,
-                    Status = ActivityStatuses.InProgress
+                    StartTime = DateTime.UtcNow,
+                    Status = ActivityStatuses.Stopped
                 },
                 new Activity
                 {
                     Id = 4,
                     Title = "Task number 4",
                     Description = "description for the test task #4",
-                    StarTime = DateTime.Now,
+                    StartTime = DateTime.UtcNow,
                     Status = ActivityStatuses.Stopped
                 },
                 new Activity
@@ -56,8 +57,8 @@ namespace ActivityTracker.Core.DAL.EF.Migrations
                     Id = 5,
                     Title = "Task number 5",
                     Description = "description for the test task #5",
-                    StarTime = DateTime.Now,
-                    Status = ActivityStatuses.Done
+                    StartTime = DateTime.UtcNow,
+                    Status = ActivityStatuses.Completed
                 }
 
                 );

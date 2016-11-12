@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using ActivityTracker.ApplicationServices.Implementation;
 using ActivityTracker.ApplicationServices.Interfaces;
@@ -13,11 +10,17 @@ namespace ActivityTracker.Web.SiteSPA.Controllers
 {
     public class ActivityController : ApiController
     {
+        private readonly IActivityService _activityService;
+
+        public ActivityController()
+        {
+            _activityService = DependencyRegistrator.Resolve<IActivityService>();
+        }
+
         // GET api/<controller>
         public IEnumerable<ActivityDto> Get()
         {
-            var activityRepo = DependencyRegistrator.Resolve<IActivityService>();
-            return activityRepo.GetAllActivities();
+            return _activityService.GetAllActivities();//.ToList();
         }
 
         // GET api/<controller>/5
@@ -27,8 +30,9 @@ namespace ActivityTracker.Web.SiteSPA.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post([FromBody]AddActivityDto activityDto)
         {
+            _activityService.AddActivity(activityDto);
         }
 
         // PUT api/<controller>/5

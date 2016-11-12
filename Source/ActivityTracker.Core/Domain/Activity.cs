@@ -17,6 +17,6 @@ namespace ActivityTracker.Core.Domain
 
         public ActivityStatuses Status { get; set; }
 
-        public DateTime StarTime { get; set; }
+        public DateTime StartTime { get; set; }
     }
 }
