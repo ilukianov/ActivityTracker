@@ -11,6 +11,8 @@ namespace ActivityTracker.ApplicationServices.Interfaces
     {
         IEnumerable<ActivityDto> GetAllActivities();
 
-        void AddActivity(AddActivityDto addActivityDto);
+        int AddActivity(AddActivityDto addActivityDto);
+
+        ActivityDto GetActivityById(int id);
     }
 }

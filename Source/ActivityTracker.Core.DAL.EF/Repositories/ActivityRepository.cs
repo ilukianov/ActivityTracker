@@ -17,14 +17,22 @@ namespace ActivityTracker.Core.DAL.EF.Repositories
             _context = context;
         }
 
-        public void Add(Activity activity)
+        public int Add(Activity activity)
         {
             _context.Activities.Add(activity);
+            _context.SaveChanges();
+
+            return activity.Id;
         }
 
         public IEnumerable<Activity> GetActivities()
         {
             return _context.Activities;
+        }
+
+        public Activity GetActivity(int id)
+        {
+            return _context.Activities.Find(id);
         }
     }
 }

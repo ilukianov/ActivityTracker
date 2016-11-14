@@ -52,12 +52,14 @@
     <Compile Include="Implementation\ActivityFieldChangeDto.cs" />
     <Compile Include="Implementation\ActivityStatusChangeDto.cs" />
     <Compile Include="Initialization\Initializer.cs" />
+    <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Implementation\ActivityDto.cs" />
     <Compile Include="Implementation\AddActivityDto.cs" />
     <Compile Include="Interfaces\IActivityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceFactory.cs" />
+    <Compile Include="SuccesfulResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Source\ActivityTracker.Common\ActivityTracker.Common.csproj">

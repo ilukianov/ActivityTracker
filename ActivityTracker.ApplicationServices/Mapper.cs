@@ -18,7 +18,7 @@ namespace ActivityTracker.ApplicationServices
         {
             _mapperConfiguration = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Activity, ActivityDto>();
-                cfg.CreateMap<AddActivityDto, Activity>();
+                cfg.CreateMap<AddActivityDto, Activity>().ForMember(m => m.StartTime, opt => opt.UseValue(new DateTime(1753, 1, 1)));
             });
         }
 

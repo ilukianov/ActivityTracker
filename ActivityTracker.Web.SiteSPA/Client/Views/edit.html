@@ -1,0 +1,32 @@
+﻿<div data-ng-controller="EditController">
+    <button data-ng-hide="isEditable()" class="btn btn-default" ng-click="create()">Add Activity</button>
+    <form data-ng-show="isEditable()">
+        <fieldset>
+            <div class="form-group">
+                <label for="title">
+                    Title
+                </label>
+                <input id="title" type="text"
+                       data-ng-model="edit.activity.Title" required
+                       class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="release">
+                    Description
+                </label>
+                <input id="release" type="text"
+                       data-ng-model="edit.activity.Description"
+                       required min="1900" max="2030"
+                       class="form-control"/>
+            </div>
+            <button class="btn btn-default"
+                    data-ng-click="save()">
+                Save
+            </button>
+            <button class="btn btn-default"
+                    data-ng-click="cancel()">
+                Cancel
+            </button>
+        </fieldset>
+    </form>
+</div>

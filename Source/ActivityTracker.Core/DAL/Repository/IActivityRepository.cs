@@ -9,8 +9,10 @@ namespace ActivityTracker.Core.DAL.Repository
 {
     public interface IActivityRepository
     {
-        void Add(Activity activity);
+        int Add(Activity activity);
 
         IEnumerable<Activity> GetActivities();
+
+        Activity GetActivity(int id);
     }
 }

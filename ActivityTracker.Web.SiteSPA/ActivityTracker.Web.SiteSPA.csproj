@@ -250,9 +250,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Client\Scripts\activityEdit.js" />
+    <Content Include="Client\Scripts\activityHelper.js" />
     <Content Include="Client\Scripts\activityService.js" />
     <Content Include="Client\Scripts\activityTrackerMain.js" />
     <Content Include="Client\Scripts\listController.js" />
+    <Content Include="Client\Views\edit.html" />
     <Content Include="Client\Views\list.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

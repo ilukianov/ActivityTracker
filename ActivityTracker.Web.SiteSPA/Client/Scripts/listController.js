@@ -60,21 +60,8 @@
         activityService.getAll("/api/activity")
             .success(function(data) {
                 $scope.activities = data;
-                angular.forEach($scope.activities, function(activity, key) {
-                    activity.CanStart = function() {
-                        return this.Status === 0;
-                    };
-                    activity.CanStop = function() {
-                        return this.Status === 1;
-                    };
-                    activity.CanComplete = function() {
-                        return this.Status !== 3;
-                    };
-                    activity.CanResume = function () {
-                        return this.Status === 2;
-                    };
-
-                    activity.StartTime = new Date(activity.StartTime);
+                angular.forEach($scope.activities, function (activity, key) {
+                    ActivityConfigutator.configure(activity);
 
                     if (activity.Status === 1) {
                         $scope.activity = activity;
@@ -105,16 +92,6 @@
                     $scope.activity = null;
                     angular.extend(activity, obj);
                 });
-        };
-
-        $scope.create = function() {
-            $scope.edit = {
-                activity: {
-                    Title: "",
-                    Runtime: 0,
-                    ReleaseYear: new Date().getFullYear()
-                }
-            };
         };
 
         var removeMovieById = function(id) {

@@ -23,10 +23,18 @@ namespace ActivityTracker.ApplicationServices
             return activityDtos;//.MapTo<ActivityDto>;
         }
 
-        public void AddActivity(AddActivityDto addActivityDto)
+        public int AddActivity(AddActivityDto addActivityDto)
         {
             var activityToAdd = Mapper.Map<AddActivityDto, Activity>(addActivityDto);
-            _activityRepository.Add(activityToAdd);
+            int newEntityId = _activityRepository.Add(activityToAdd);
+            return newEntityId;
+        }
+
+        public ActivityDto GetActivityById(int id)
+        {
+            var activity = _activityRepository.GetActivity(id);
+            var activityDto = Mapper.Map<Activity, ActivityDto>(activity);
+            return activityDto;//.MapTo<ActivityDto>;
         }
     }
 }

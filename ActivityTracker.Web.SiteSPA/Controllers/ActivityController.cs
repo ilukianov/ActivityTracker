@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Description;
 using ActivityTracker.ApplicationServices.Implementation;
 using ActivityTracker.ApplicationServices.Interfaces;
 using ActivityTracker.Core.Infrastructure;
@@ -29,10 +30,13 @@ namespace ActivityTracker.Web.SiteSPA.Controllers
             return "value";
         }
 
+        [ResponseType(typeof(ActivityDto))]
         // POST api/<controller>
-        public void Post([FromBody]AddActivityDto activityDto)
+        public IHttpActionResult Post([FromBody]AddActivityDto activityDto)
         {
-            _activityService.AddActivity(activityDto);
+            int id = _activityService.AddActivity(activityDto);
+            var addedItem = _activityService.GetActivityById(id);
+            return CreatedAtRoute("DefaultApi", new { Id = addedItem.Id }, addedItem);
         }
 
         // PUT api/<controller>/5

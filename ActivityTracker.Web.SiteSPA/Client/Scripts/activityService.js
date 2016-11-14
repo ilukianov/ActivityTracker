@@ -11,7 +11,7 @@
         };
 
         var update = function(activity) {
-            return $http.put(activityApiUrl + activity.id, activity);
+            return $http.put(activityApiUrl + activity.Id, activity);
         };
 
         var create = function(activity) {
@@ -27,7 +27,7 @@
         };
 
         var destroy = function(activity) {
-            return $http.delete(activityApiUrl + activity.id);
+            return $http.delete(activityApiUrl + activity.Id);
         };
 
         return {
