@@ -1,4 +1,11 @@
-﻿(function (app) {
+﻿/*
+        None = 0,
+        InProgress = 1,
+        Stopped = 2,
+        Completed = 3
+*/
+
+(function (app) {
     var ListController = function ($scope, $interval, activityService) {
 
         function ActivityTimer() {
@@ -8,7 +15,7 @@
             self.CurrentTime = new Date();
 
             self.GetActivityDuration = function() {
-                if ($scope.activity === null || $scope.activity === undefined) {
+                if ($scope.activityRunning === null || $scope.activityRunning === undefined) {
                     return null;
                 }
 
@@ -16,7 +23,7 @@
             };
 
             function getTimeSpanForActivity() {
-                var diff = self.CurrentTime.getTime() - $scope.activity.StartTime.getTime();
+                var diff = self.CurrentTime.getTime() - $scope.activityRunning.StartTime.getTime();
                 var days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 diff -= days * (1000 * 60 * 60 * 24);
 
@@ -36,7 +43,7 @@
                 else if (hours > 0) {
                     timeSpan = hours + ":" + mins + ":" + seconds;
                 }
-                else if (mins > 0) {
+                else {
                     timeSpan = mins + ":" + seconds;
                 }
 
@@ -61,10 +68,10 @@
             .success(function(data) {
                 $scope.activities = data;
                 angular.forEach($scope.activities, function (activity, key) {
-                    ActivityConfigutator.configure(activity);
+                    ActivityConfigurator.configure(activity);
 
                     if (activity.Status === 1) {
-                        $scope.activity = activity;
+                        $scope.activityRunning = activity;
                     }
                 });
             });
@@ -77,19 +84,61 @@
         };
 
         $scope.start = function(activity) {
-            var obj = { "Id": activity.Id, "Status": 1 };
-            activityService.start(obj)
+            var startActivity,
+                stopActivity,
+                activitiesForStatusChange;
+
+            if (activity === $scope.activityRunning) {
+                return;
+            }
+
+            startActivity = angular.copy(activity);
+            startActivity.StartTime = new Date();
+            startActivity.Status = 1;
+
+            if ($scope.activityRunning) {
+                stopActivity = angular.copy($scope.activityRunning);
+                stopActivity.Status = 2;
+
+                activitiesForStatusChange = [stopActivity, startActivity];
+            } else {
+                activitiesForStatusChange = [startActivity];
+            }
+
+            activityService.changeStatus(activitiesForStatusChange)
                 .success(function () {
-                    $scope.activity = activity;
-                    angular.extend($scope.activity, obj);
+                    //stop previous
+                    if ($scope.activityRunning) {
+                        angular.extend($scope.activityRunning, stopActivity);
+                    }
+
+                    //start next
+                    angular.extend(activity, startActivity);
+                    $scope.activityRunning = activity;
                 });
         };
 
         $scope.stop = function(activity) {
-            var obj = { "Id": activity.Id, "Title": "Some text" };
-            activityService.stop(obj)
+            var obj = angular.copy(activity);
+            obj.Status = 2;
+
+            activityService.changeStatus([obj])
                 .success(function () {
-                    $scope.activity = null;
+                    $scope.activityRunning = null;
+                    angular.extend(activity, obj);
+                });
+        };
+
+        $scope.done = function (activity) {
+            var obj = angular.copy(activity);
+            obj.Status = 3;
+
+            activityService.changeStatus([obj])
+                .success(function () {
+                    if ($scope.activityRunning === activity) {
+                        $scope.activityRunning = null;
+                    }
+
                     angular.extend(activity, obj);
                 });
         };

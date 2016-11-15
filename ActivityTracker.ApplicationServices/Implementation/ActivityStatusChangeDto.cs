@@ -12,5 +12,7 @@ namespace ActivityTracker.ApplicationServices.Implementation
         public int Id { get; set; }
 
         public ActivityStatuses Status { get; set; }
+
+        public DateTime StartTime { get; set; }
     }
 }

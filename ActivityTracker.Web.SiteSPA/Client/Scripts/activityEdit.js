@@ -37,7 +37,8 @@
         var createActivity = function () {
             activityService.create($scope.edit.activity)
                 .success(function (activity) {
-                    $scope.activities.push(ActivityConfigutator.configure(activity));
+                    // Can use angular.extend ?
+                    $scope.activities.push(ActivityConfigurator.configure(activity));
                     $scope.edit.activity = null;
                 });
         };

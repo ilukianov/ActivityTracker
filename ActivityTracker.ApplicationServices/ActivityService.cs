@@ -36,5 +36,11 @@ namespace ActivityTracker.ApplicationServices
             var activityDto = Mapper.Map<Activity, ActivityDto>(activity);
             return activityDto;//.MapTo<ActivityDto>;
         }
+
+        public void UpdateActivity(ActivityDto activityDto)
+        {
+            var activity = Mapper.Map<ActivityDto, Activity>(activityDto);
+            _activityRepository.Update(activity);
+        }
     }
 }

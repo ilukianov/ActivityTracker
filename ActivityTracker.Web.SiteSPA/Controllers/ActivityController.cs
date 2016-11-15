@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ActivityTracker.ApplicationServices.Implementation;
@@ -51,11 +50,14 @@ namespace ActivityTracker.Web.SiteSPA.Controllers
             Debug.WriteLine(id);
         }
 
-        [Route("api/activity/changestatus/{id:int}")]
+        [Route("api/activity/changestatus")]
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]ActivityStatusChangeDto activityDto)
+        public void PutActivity([FromBody]IEnumerable<ActivityDto> activityDtos)
         {
-            Debug.WriteLine(id);
+            foreach (var activityDto in activityDtos)
+            {
+                _activityService.UpdateActivity(activityDto);
+            }
         }
 
         [Route("api/activity/changetitle/{id:int}")]

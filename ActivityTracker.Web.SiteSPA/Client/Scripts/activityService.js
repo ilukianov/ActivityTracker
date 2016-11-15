@@ -18,12 +18,12 @@
             return $http.post(activityApiUrl, activity);
         };
 
-        var start = function(activity) {
-            return $http.put(activityApiUrl + "changestatus/" + activity.Id, activity);
+        var changeStatus = function(activity) {
+            return $http.put(activityApiUrl + "changestatus/", activity);
         };
 
         var stop = function(activity) {
-            return $http.put(activityApiUrl + "changetitle/" + activity.Id, activity);
+            return $http.put(activityApiUrl + "changestatus/" + activity.Id, activity);
         };
 
         var destroy = function(activity) {
@@ -36,8 +36,7 @@
             update: update,
             create: create,
             delete: destroy,
-            start: start,
-            stop: stop
+            changeStatus: changeStatus
         };
     };
 

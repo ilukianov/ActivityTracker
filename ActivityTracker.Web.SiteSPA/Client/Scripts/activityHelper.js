@@ -1,9 +1,9 @@
-﻿function ActivityConfigutator() {
+﻿function ActivityConfigurator() {
 };
 
-ActivityConfigutator.configure = function(activity, key) {
+ActivityConfigurator.configure = function(activity, key) {
     activity.CanStart = function() {
-        return this.Status === 0;
+        return this.Status === 0 || this.Status === 2;
     };
     activity.CanStop = function() {
         return this.Status === 1;

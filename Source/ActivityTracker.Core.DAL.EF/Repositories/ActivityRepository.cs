@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,12 @@ namespace ActivityTracker.Core.DAL.EF.Repositories
         public Activity GetActivity(int id)
         {
             return _context.Activities.Find(id);
+        }
+
+        public void Update(Activity activity)
+        {
+            _context.Entry(activity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }
