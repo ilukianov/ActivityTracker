@@ -255,6 +255,7 @@
     <Content Include="Client\Scripts\activityService.js" />
     <Content Include="Client\Scripts\activityTrackerMain.js" />
     <Content Include="Client\Scripts\listController.js" />
+    <Content Include="Client\Styles\main.css" />
     <Content Include="Client\Views\edit.html" />
     <Content Include="Client\Views\list.html" />
     <Content Include="Content\bootstrap.css" />

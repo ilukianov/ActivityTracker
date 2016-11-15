@@ -2,14 +2,14 @@
     
     <div ng-include="'/Client/views/edit.html'"></div>
     <table>
-        <tr ng-repeat="activity in activities">
+        <tr ng-repeat="activity in activities" class="activity_item activity_content_item">
             <td>{{activity.Title}}</td>
-            <td ng-show="activity.CanResume()">Stopped</td>
-            <td ng-show="activity.CanStop()" ng-bind="timer.GetActivityDuration()"></td>
+            <td><span ng-show="activity.CanResume()" class="glyphicon glyphicon-ban-circle"></span><span ng-show="activity.CanStop()" ng-bind="timer.GetActivityDuration()"></span></td>
+            <td ></td>
             <td>
-                <button ng-show="activity.CanStart()" class="btn btn-default" ng-click="start(activity)">Start</button>
-                <button ng-show="activity.CanStop()" class="btn btn-default" ng-click="stop(activity)">Stop</button>
-                <button ng-show="activity.CanComplete()" class="btn btn-default" ng-click="done(activity)">Done</button>
+                <button ng-show="activity.CanStart()" class="btn btn-default" ng-click="start(activity)"><span class="glyphicon glyphicon-play-circle"></span></button>
+                <button ng-show="activity.CanStop()" class="btn btn-default" ng-click="stop(activity)"><span class="glyphicon glyphicon-pause"></span></button>
+                <button ng-show="activity.CanComplete()" class="btn btn-default" ng-click="done(activity)"><span class="glyphicon glyphicon-unchecked"></span></button>
             </td>
         </tr>
     </table>
