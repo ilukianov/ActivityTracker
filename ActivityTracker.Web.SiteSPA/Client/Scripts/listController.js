@@ -8,10 +8,44 @@
 (function (app) {
     var ListController = function ($scope, $interval, activityService) {
 
+        $scope.getActivitiesCountForToday = function() {
+            var activitiesForToday = 0;
+
+            if ($scope.activities) {
+                angular.forEach($scope.activities, function (activity, key) {
+                    if (activity.Status !== 3) {
+                        activitiesForToday += 1;
+                    }
+                });
+            }
+
+            return activitiesForToday;
+        };
+
+        $scope.getActivitiesTimeForToday = function () {
+            var activitiesTimeSpentForToday = 0;
+
+            if ($scope.activities) {
+                angular.forEach($scope.activities, function (activity, key) {
+                    if (activity.Status !== 1) {
+                        activitiesTimeSpentForToday += activity.Duration;
+                    }
+                });
+            }
+
+            return TimeHelper.getTimeFromMilliseconds(activitiesTimeSpentForToday + $scope.timer.GetActivityDuration());
+        };
+
         function ActivityTimer() {
             var self = this;
 
             self.CurrentTime = new Date();
+
+            self.GetActivityDurationAsString = function () {
+                var duration = self.GetActivityDuration();
+
+                return TimeHelper.getTimeFromMilliseconds(duration);
+            };
 
             self.GetActivityDuration = function() {
                 if ($scope.activityRunning === null || $scope.activityRunning === undefined) {
@@ -24,7 +58,7 @@
             function getTimeSpanForActivity() {
                 var diff = self.CurrentTime.getTime() - $scope.activityRunning.TimeStamp.getTime() + $scope.activityRunning.Duration;
 
-                return TimeHelper.getTimeFromMilliseconds(diff);
+                return diff;
             }
             
             self.timerId = $interval(timeIntervalCallback, 1000);

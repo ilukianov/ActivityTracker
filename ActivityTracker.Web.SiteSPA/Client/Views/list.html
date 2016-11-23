@@ -7,7 +7,7 @@
             <td>
                 <!--<span ng-show="activity.CanResume()" class="glyphicon glyphicon-ban-circle"></span>-->
                 <span ng-show="activity.IsNotInProgress()" ng-bind="activity.GetDuration()"></span>
-                <span ng-show="activity.CanStop()" ng-bind="timer.GetActivityDuration()"></span>
+                <span ng-show="activity.CanStop()" ng-bind="timer.GetActivityDurationAsString()"></span>
             </td>
             
             <td ></td>
@@ -18,7 +18,8 @@
             </td>
         </tr>
     </table>
-    <div><span>Tasks for today - {{activities.length}}</span></div>
+    <div><span>Tasks for today: <span ng-bind="getActivitiesCountForToday()"></span> Total: {{activities.length}}</span></div>
+    <div><span>Spent time: <span ng-bind="getActivitiesTimeForToday()"></span></span></div>
 
     <!-- <div ng-include="'/Client/views/edit.html'">
     </div>-->
