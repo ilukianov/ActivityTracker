@@ -14,6 +14,6 @@ namespace ActivityTracker.ApplicationServices.Interfaces
         int AddActivity(AddActivityDto addActivityDto);
 
         ActivityDto GetActivityById(int id);
-        void UpdateActivity(ActivityDto activityDto);
+        void UpdateActivity(ActivityUpdateDto activityDto);
     }
 }

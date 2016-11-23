@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using ActivityTracker.Common;
 
-namespace ActivityTracker.ApplicationServices.Implementation
+namespace ActivityTracker.Web.SiteSPA.Adapters
 {
-    public sealed class ActivityDto
+    public sealed class ActivityAdapterDto
     {
         public int Id { get; set; }
 
@@ -17,8 +16,8 @@ namespace ActivityTracker.ApplicationServices.Implementation
 
         public ActivityStatuses Status { get; set; }
 
-        public DateTime TimeStamp { get; set; }
+        public long TimeStamp { get; set; }
 
-        public TimeSpan Duration { get; set; }
+        public long Duration { get; set; }
     }
 }

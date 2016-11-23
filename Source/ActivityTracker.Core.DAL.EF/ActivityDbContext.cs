@@ -13,9 +13,29 @@ namespace ActivityTracker.Core.DAL.EF
     {
         public ActivityDbContext() : base("DefaultConnection")
         {
+            //Configuration.ProxyCreationEnabled = false;
             Debug.Write(Database.Connection.ConnectionString);
         }
 
+
+        protected override void OnModelCreating(DbModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.HasDefaultSchema("dbo");
+
+            builder.Entity<Activity>()
+                .HasKey(a => a.Id);
+
+            builder.Entity<TimeStep>()
+                .HasKey(t => t.Id)
+                .HasRequired(t => t.Activity)
+                .WithMany(a => a.TimeSteps)
+                .HasForeignKey(t => t.ActivityId);
+        }
+
         public DbSet<Activity> Activities { get; set; }
+
+        public DbSet<TimeStep> TimeSteps { get; set; }
     }
 }

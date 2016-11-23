@@ -51,6 +51,7 @@
     <Compile Include="ActivityService.cs" />
     <Compile Include="Implementation\ActivityFieldChangeDto.cs" />
     <Compile Include="Implementation\ActivityStatusChangeDto.cs" />
+    <Compile Include="Implementation\ActivityUpdateDto.cs" />
     <Compile Include="Initialization\Initializer.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Mapper.cs" />

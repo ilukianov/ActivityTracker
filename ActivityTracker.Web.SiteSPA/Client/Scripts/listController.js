@@ -9,8 +9,7 @@
     var ListController = function ($scope, $interval, activityService) {
 
         function ActivityTimer() {
-            var self = this,
-                timerId;
+            var self = this;
 
             self.CurrentTime = new Date();
 
@@ -19,43 +18,16 @@
                     return null;
                 }
 
-                return getTimeSpanForActivity();//new Date(self.CurrentTime - $scope.activity.StartTime); //timeSpan;
+                return getTimeSpanForActivity();
             };
 
             function getTimeSpanForActivity() {
-                var diff = self.CurrentTime.getTime() - $scope.activityRunning.StartTime.getTime();
-                var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                diff -= days * (1000 * 60 * 60 * 24);
+                var diff = self.CurrentTime.getTime() - $scope.activityRunning.TimeStamp.getTime() + $scope.activityRunning.Duration;
 
-                var hours = Math.floor(diff / (1000 * 60 * 60));
-                diff -= hours * (1000 * 60 * 60);
-
-                var mins = Math.floor(diff / (1000 * 60));
-                diff -= mins * (1000 * 60);
-
-                var seconds = Math.floor(diff / (1000));
-                diff -= seconds * (1000);
-
-                var timeSpan = "";
-                if (days > 0) {
-                    timeSpan = days + ":" + hours + ":" + mins + ":" + seconds;
-                }
-                else if (hours > 0) {
-                    timeSpan = hours + ":" + mins + ":" + seconds;
-                }
-                else {
-                    timeSpan = mins + ":" + seconds;
-                }
-
-                // todo move the code above into separate class and file
-                return timeSpan;
+                return TimeHelper.getTimeFromMilliseconds(diff);
             }
             
             self.timerId = $interval(timeIntervalCallback, 1000);
-            
-/*            function startTimer() {
-                
-            };*/
 
             function timeIntervalCallback() {
                 self.CurrentTime = new Date();
@@ -83,63 +55,112 @@
                 });
         };
 
-        $scope.start = function(activity) {
+        $scope.start = function(activityToStart) {
             var startActivity,
                 stopActivity,
-                activitiesForStatusChange;
+                activitiesForStatusChange = [],
+                updatedActivities;
 
-            if (activity === $scope.activityRunning) {
+            //skip start if it is running activity
+            if (activityToStart === $scope.activityRunning) {
                 return;
             }
 
-            startActivity = angular.copy(activity);
-            startActivity.StartTime = new Date();
-            startActivity.Status = 1;
-
+            //add activity to stop
             if ($scope.activityRunning) {
                 stopActivity = angular.copy($scope.activityRunning);
+                stopActivity.TimeStamp = new Date();
                 stopActivity.Status = 2;
 
-                activitiesForStatusChange = [stopActivity, startActivity];
-            } else {
-                activitiesForStatusChange = [startActivity];
+                activitiesForStatusChange.push(stopActivity);
             }
 
+            // get activity to start
+            startActivity = angular.copy(activityToStart);
+            startActivity.TimeStamp = new Date();
+            console.log(startActivity.TimeStamp);
+            console.log(startActivity.TimeStamp.getTime());
+            startActivity.Status = 1;
+            activitiesForStatusChange.push(startActivity);
+
+            //here should be something like a queue or broker
             activityService.changeStatus(activitiesForStatusChange)
-                .success(function () {
+                .success(function (updatedActivities) {
+                    angular.forEach(updatedActivities, function (activity, key) {
+
+                        //ActivityConfigurator.configure(activity);
+
+                        if ($scope.activityRunning) {
+                            if (activity.Id === $scope.activityRunning.Id) {
+                                ActivityConfigurator.configure(activity);
+                                angular.extend($scope.activityRunning, activity);
+                            }
+                        }
+
+                        if (activityToStart) {
+                            if (activity.Id === activityToStart.Id) {
+                                ActivityConfigurator.configure(activity);
+                                angular.extend(activityToStart, activity);
+                            }
+                        }
+                    });
+
                     //stop previous
-                    if ($scope.activityRunning) {
+                    /*if ($scope.activityRunning) {
                         angular.extend($scope.activityRunning, stopActivity);
-                    }
+                    }*/
 
                     //start next
-                    angular.extend(activity, startActivity);
-                    $scope.activityRunning = activity;
+                    //angular.extend(activity, startActivity);
+                    $scope.activityRunning = activityToStart;
                 });
         };
 
-        $scope.stop = function(activity) {
-            var obj = angular.copy(activity);
+        $scope.stop = function(activityToStop) {
+            var obj = angular.copy(activityToStop),
+                updatedActivities;
+            obj.TimeStamp = new Date();
+            console.log(obj.TimeStamp);
             obj.Status = 2;
 
             activityService.changeStatus([obj])
-                .success(function () {
+                .success(function (updatedActivities) {
+
+                    angular.forEach(updatedActivities, function(activity, key) {
+                        if (activityToStop) {
+                            if (activity.Id === activityToStop.Id) {
+                                ActivityConfigurator.configure(activity);
+                                angular.extend(activityToStop, activity);
+                            }
+                        }
+                    });
+
                     $scope.activityRunning = null;
-                    angular.extend(activity, obj);
+                    //angular.extend(activityToStop, obj);
                 });
         };
 
-        $scope.done = function (activity) {
-            var obj = angular.copy(activity);
+        $scope.done = function (activityToDone) {
+            var obj = angular.copy(activityToDone),
+                updatedActivities;
             obj.Status = 3;
 
             activityService.changeStatus([obj])
-                .success(function () {
-                    if ($scope.activityRunning === activity) {
+                .success(function (updatedActivities) {
+                    angular.forEach(updatedActivities, function (activity, key) {
+                        if (activityToDone) {
+                            if (activity.Id === activityToDone.Id) {
+                                ActivityConfigurator.configure(activity);
+                                angular.extend(activityToDone, activity);
+                            }
+                        }
+                    });
+
+                    if ($scope.activityRunning === activityToDone) {
                         $scope.activityRunning = null;
                     }
 
-                    angular.extend(activity, obj);
+                    //angular.extend(activity, obj);
                 });
         };
 

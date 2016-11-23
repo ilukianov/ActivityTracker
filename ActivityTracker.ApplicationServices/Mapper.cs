@@ -17,10 +17,15 @@ namespace ActivityTracker.ApplicationServices
         static Mapper()
         {
             _mapperConfiguration = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Activity, ActivityDto>();
+                cfg.CreateMap<Activity, ActivityDto>()
+                .ForMember(dest => dest.Duration, opt => opt.MapFrom(x => x.GetDuration()))
+                .ForMember(dest => dest.TimeStamp, opt => opt.MapFrom(x => x.GetStartTime()));
                 cfg.CreateMap<ActivityDto, Activity>();
-                cfg.CreateMap<AddActivityDto, Activity>().ForMember(m => m.StartTime, opt => opt.UseValue(new DateTime(1753, 1, 1)));
+                cfg.CreateMap<AddActivityDto, Activity>()
+                .ForMember(dest => dest.TimeSteps, opt => opt.UseValue(new TimeStep[0]));
             });
+
+            //_mapperConfiguration.AssertConfigurationIsValid();
         }
 
         public static TDestination Map<TSource, TDestination>(TSource obj)
