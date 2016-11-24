@@ -17,7 +17,6 @@ namespace ActivityTracker.Core.DAL.EF
             Debug.Write(Database.Connection.ConnectionString);
         }
 
-
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -36,6 +35,6 @@ namespace ActivityTracker.Core.DAL.EF
 
         public DbSet<Activity> Activities { get; set; }
 
-        public DbSet<TimeStep> TimeSteps { get; set; }
+        //public DbSet<TimeStep> TimeSteps { get; set; }
     }
 }

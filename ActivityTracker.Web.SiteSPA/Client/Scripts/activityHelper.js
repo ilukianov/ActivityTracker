@@ -53,7 +53,8 @@ TimeHelper.getTimeFromMilliseconds = function (milliseconds) {
 
     var timeSpan = "";
     if (days > 0) {
-        timeSpan = days + ":" + hours + ":" + mins + ":" + seconds;
+        timeSpan = days + " d " + hours + " h";
+        //timeSpan = days + ":" + hours + ":" + mins + ":" + seconds;
     }
     else if (hours > 0) {
         timeSpan = hours + ":" + mins + ":" + seconds;
