@@ -12,6 +12,7 @@ namespace ActivityTracker.ApplicationServices.Initialization
         public void Register()
         {
             DependencyRegistrator.Register<IActivityService, ActivityService>();
+            DependencyRegistrator.Register<IGoalService, GoalService>();
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿<div data-ng-controller="GoalController">
+    <div data-ng-include="'/Client/views/goalEdit.html'"></div>
+    <table>
+        <tr data-ng-repeat="goal in goals">
+            <td>
+                <div><span data-ng-bind="goal.Title"></span></div>
+                <div><span data-ng-bind="goal.Description"></span></div>
+            </td>
+            <td></td>
+            <td>
+                <!--<span ng-show="activity.CanResume()" class="glyphicon glyphicon-ban-circle"></span>-->
+                <!--<span ng-show="activity.IsNotInProgress()" ng-bind="activity.GetDuration()"></span>-->
+                <!--<span ng-show="activity.CanStop()" ng-bind="timer.GetActivityDurationAsString()"></span>-->
+            </td>
+
+            <td></td>
+            <td>
+                <!--<button ng-show="activity.CanStart()" class="btn btn-default" ng-click="start(activity)"><span class="glyphicon glyphicon-play-circle"></span></button>
+                <button ng-show="activity.CanStop()" class="btn btn-default" ng-click="stop(activity)"><span class="glyphicon glyphicon-pause"></span></button>
+                <button ng-show="activity.CanComplete()" class="btn btn-default" ng-click="done(activity)"><span class="glyphicon glyphicon-unchecked"></span></button>-->
+            </td>
+        </tr>
+    </table>
+</div>

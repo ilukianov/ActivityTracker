@@ -241,6 +241,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\GoalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -261,9 +262,16 @@
     <Content Include="Client\Scripts\activityHelper.js" />
     <Content Include="Client\Scripts\activityService.js" />
     <Content Include="Client\Scripts\activityTrackerMain.js" />
+    <Content Include="Client\Scripts\allActivitiesController.js" />
+    <Content Include="Client\Scripts\goalController.js" />
+    <Content Include="Client\Scripts\goalEditController.js" />
+    <Content Include="Client\Scripts\goalService.js" />
     <Content Include="Client\Scripts\listController.js" />
     <Content Include="Client\Styles\main.css" />
+    <Content Include="Client\Views\allactivities.html" />
     <Content Include="Client\Views\edit.html" />
+    <Content Include="Client\Views\goalEdit.html" />
+    <Content Include="Client\Views\goals.html" />
     <Content Include="Client\Views\list.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

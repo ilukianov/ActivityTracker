@@ -49,10 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityService.cs" />
+    <Compile Include="GoalService.cs" />
     <Compile Include="Implementation\ActivityFieldChangeDto.cs" />
     <Compile Include="Implementation\ActivityStatusChangeDto.cs" />
     <Compile Include="Implementation\ActivityUpdateDto.cs" />
+    <Compile Include="Implementation\GoalAddDto.cs" />
+    <Compile Include="Implementation\GoalDto.cs" />
     <Compile Include="Initialization\Initializer.cs" />
+    <Compile Include="Interfaces\IGoalService.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Implementation\ActivityDto.cs" />

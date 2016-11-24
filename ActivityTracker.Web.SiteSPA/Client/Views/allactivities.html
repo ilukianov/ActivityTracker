@@ -1,7 +1,6 @@
-﻿<div data-ng-controller="ListController">
+﻿<div data-ng-controller="AllActivitiesController">
 
     <div ng-include="'/Client/views/edit.html'"></div>
-    <div><a href="#/goals">goals link</a></div>
     <table>
         <tr ng-repeat="activity in activities" class="activity_item activity_content_item">
             <td>{{activity.Title}}</td>
@@ -10,8 +9,8 @@
                 <span ng-show="activity.IsNotInProgress()" ng-bind="activity.GetDuration()"></span>
                 <span ng-show="activity.CanStop()" ng-bind="timer.GetActivityDurationAsString()"></span>
             </td>
-            
-            <td ></td>
+
+            <td></td>
             <td>
                 <button ng-show="activity.CanStart()" class="btn btn-default" ng-click="start(activity)"><span class="glyphicon glyphicon-play-circle"></span></button>
                 <button ng-show="activity.CanStop()" class="btn btn-default" ng-click="stop(activity)"><span class="glyphicon glyphicon-pause"></span></button>

@@ -1,0 +1,43 @@
+﻿<div data-ng-controller="GoalEditController">
+    <button data-ng-hide="isEditable()" class="btn btn-default" data-ng-click="create()"><span class="glyphicon glyphicon-plus"></span></button>
+    <!--<button class="btn btn-default" data-ng-click="turnOnControlMode()"><span>Control Mode</span></button>-->
+    <!--<button class="btn btn-default" data-ng-click="turnOffControlMode()"><span>View Mode</span></button>-->
+    <form data-ng-show="isEditable()">
+        <fieldset>
+            <div class="form-group">
+                <label for="title">
+                    Title
+                </label>
+                <input id="title" type="text"
+                       data-ng-model="edit.goal.Title" required
+                       class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="release">
+                    Description
+                </label>
+                <input id="release" type="text"
+                       data-ng-model="edit.goal.Description"
+                       required min="1900" max="2030"
+                       class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="release">
+                    Active
+                </label>
+                <input id="release" type="checkbox"
+                       data-ng-model="edit.goal.IsActive"
+                       
+                       class="form-control" />
+            </div>
+            <button class="btn btn-default"
+                    data-ng-click="save()">
+                Save
+            </button>
+            <button class="btn btn-default"
+                    data-ng-click="cancel()">
+                Cancel
+            </button>
+        </fieldset>
+    </form>
+</div>

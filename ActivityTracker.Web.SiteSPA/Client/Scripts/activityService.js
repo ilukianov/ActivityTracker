@@ -22,10 +22,6 @@
             return $http.put(activityApiUrl + "changestatus/", activity);
         };
 
-        var stop = function(activity) {
-            return $http.put(activityApiUrl + "changestatus/" + activity.Id, activity);
-        };
-
         var destroy = function(activity) {
             return $http.delete(activityApiUrl + activity.Id);
         };
